@@ -26,13 +26,13 @@ public class ManagementRestService {
 
     public ManagementRestService() {}
 
-    public List<JsonRelease> getReleases(String repository) {
+    public List<JsonRelease> getReleases(String repository, int page, int size) {
 
-        log.info("get releases from '{}'", repository);
+        log.info("get releases from '{}', page {}, size {}", repository, page, size);
 
         List<Release> releases;
         try {
-            releases = gitHubService.getReleases(repository);
+            releases = gitHubService.getReleases(repository, page, size);
         } catch (Exception e) {
             throw new GRMException("Could not get releases from '" + repository + "'", e);
         }

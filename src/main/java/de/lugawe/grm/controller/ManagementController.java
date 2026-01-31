@@ -21,9 +21,12 @@ public class ManagementController {
 
     @GET
     @Path("/{repository}/releases")
-    public Response getReleases(@PathParam("repository") String repository) {
+    public Response getReleases(
+            @PathParam("repository") String repository,
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("size") @DefaultValue("10") int size) {
 
-        List<JsonRelease> releases = managementRestService.getReleases(repository);
+        List<JsonRelease> releases = managementRestService.getReleases(repository, page, size);
 
         return Response.ok(releases).build();
     }

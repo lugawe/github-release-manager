@@ -6,7 +6,7 @@ import de.lugawe.grm.core.domain.Release;
 
 public interface GitHubService {
 
-    List<Release> getReleases(String repository) throws Exception;
+    List<Release> getReleases(String repository, int page, int size) throws Exception;
 
     Release getRelease(String repository, String releaseName) throws Exception;
 
