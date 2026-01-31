@@ -2,12 +2,12 @@ package de.lugawe.grm.core.domain;
 
 import java.util.List;
 
-public final class Project {
+public final class Repository {
 
     private String name;
     private List<Release> releases;
 
-    public Project() {}
+    public Repository() {}
 
     public String getName() {
         return name;

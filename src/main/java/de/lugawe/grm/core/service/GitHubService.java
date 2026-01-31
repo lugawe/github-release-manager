@@ -6,11 +6,11 @@ import de.lugawe.grm.core.domain.Release;
 
 public interface GitHubService {
 
-    List<Release> getReleases(String projectName);
+    List<Release> getReleases(String repository);
 
-    Release getRelease(String projectName, String releaseName);
+    Release getRelease(String repository, String releaseName);
 
-    default Release getLatestRelease(String projectName) {
-        return getRelease(projectName, Release.LATEST);
+    default Release getLatestRelease(String repository) {
+        return getRelease(repository, Release.LATEST);
     }
 }

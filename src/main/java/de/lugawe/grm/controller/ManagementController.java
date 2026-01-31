@@ -9,7 +9,7 @@ import jakarta.ws.rs.core.Response;
 
 import de.lugawe.grm.controller.json.JsonRelease;
 
-@Path("/projects")
+@Path("/repos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ManagementController {
@@ -20,20 +20,20 @@ public class ManagementController {
     public ManagementController() {}
 
     @GET
-    @Path("/{projectName}/releases")
-    public Response getReleases(@PathParam("projectName") String projectName) {
+    @Path("/{repository}/releases")
+    public Response getReleases(@PathParam("repository") String repository) {
 
-        List<JsonRelease> releases = managementRestService.getReleases(projectName);
+        List<JsonRelease> releases = managementRestService.getReleases(repository);
 
         return Response.ok(releases).build();
     }
 
     @GET
-    @Path("/{projectName}/releases/{versionName}")
+    @Path("/{repository}/releases/{versionName}")
     public Response getRelease(
-            @PathParam("projectName") String projectName, @PathParam("releaseName") String releaseName) {
+            @PathParam("repository") String repository, @PathParam("releaseName") String releaseName) {
 
-        JsonRelease release = managementRestService.getRelease(projectName, releaseName);
+        JsonRelease release = managementRestService.getRelease(repository, releaseName);
 
         return Response.ok(release).build();
     }

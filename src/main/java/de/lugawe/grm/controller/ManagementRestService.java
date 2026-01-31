@@ -21,16 +21,16 @@ public class ManagementRestService {
 
     public ManagementRestService() {}
 
-    public List<JsonRelease> getReleases(String projectName) {
+    public List<JsonRelease> getReleases(String repository) {
 
-        List<Release> releases = gitHubService.getReleases(projectName);
+        List<Release> releases = gitHubService.getReleases(repository);
 
         return releases.stream().map(jsonConverter::toJsonRelease).toList();
     }
 
-    public JsonRelease getRelease(String projectName, String releaseName) {
+    public JsonRelease getRelease(String repository, String releaseName) {
 
-        Release release = gitHubService.getRelease(projectName, releaseName);
+        Release release = gitHubService.getRelease(repository, releaseName);
 
         return jsonConverter.toJsonRelease(release);
     }
