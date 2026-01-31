@@ -4,17 +4,17 @@ import java.util.List;
 
 public final class Release {
 
-    private String version;
+    private String name;
     private List<Asset> assets;
 
     public Release() {}
 
-    public String getVersion() {
-        return version;
+    public String getName() {
+        return name;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Asset> getAssets() {
