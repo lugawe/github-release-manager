@@ -4,6 +4,8 @@ import java.util.List;
 
 public final class Release {
 
+    public static final String LATEST = "latest";
+
     private String name;
     private List<Asset> assets;
 

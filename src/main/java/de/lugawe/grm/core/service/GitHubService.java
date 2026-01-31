@@ -10,5 +10,7 @@ public interface GitHubService {
 
     Release getRelease(String projectName, String releaseName);
 
-    Release getLatestRelease(String projectName);
+    default Release getLatestRelease(String projectName) {
+        return getRelease(projectName, Release.LATEST);
+    }
 }
