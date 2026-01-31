@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JsonRelease {
 
-    @JsonProperty("version")
+    @JsonProperty("release_name")
     private String name;
 
     public JsonRelease() {}
