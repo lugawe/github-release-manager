@@ -7,6 +7,7 @@ import jakarta.inject.Inject;
 
 import de.lugawe.grm.controller.json.JsonConverter;
 import de.lugawe.grm.controller.json.JsonRelease;
+import de.lugawe.grm.core.domain.Release;
 import de.lugawe.grm.core.service.GitHubService;
 
 @ApplicationScoped
@@ -22,11 +23,15 @@ public class ManagementRestService {
 
     public List<JsonRelease> getReleases(String projectName) {
 
-        return null;
+        List<Release> releases = gitHubService.getReleases(projectName);
+
+        return releases.stream().map(jsonConverter::toJsonRelease).toList();
     }
 
     public JsonRelease getRelease(String projectName, String releaseName) {
 
-        return null;
+        Release release = gitHubService.getRelease(projectName, releaseName);
+
+        return jsonConverter.toJsonRelease(release);
     }
 }
