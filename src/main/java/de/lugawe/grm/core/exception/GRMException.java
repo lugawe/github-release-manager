@@ -1,4 +1,4 @@
-package de.lugawe.grm.core.exceptions;
+package de.lugawe.grm.core.exception;
 
 public class GRMException extends RuntimeException {
 
