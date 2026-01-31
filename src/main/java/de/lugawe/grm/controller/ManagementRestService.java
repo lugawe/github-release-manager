@@ -10,9 +10,13 @@ import de.lugawe.grm.controller.json.JsonRelease;
 import de.lugawe.grm.core.domain.Release;
 import de.lugawe.grm.core.exception.GRMException;
 import de.lugawe.grm.core.service.GitHubService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @ApplicationScoped
 public class ManagementRestService {
+
+    private static final Logger log = LoggerFactory.getLogger(ManagementRestService.class);
 
     @Inject
     private JsonConverter jsonConverter;
@@ -23,6 +27,8 @@ public class ManagementRestService {
     public ManagementRestService() {}
 
     public List<JsonRelease> getReleases(String repository) {
+
+        log.info("get releases from '{}'", repository);
 
         List<Release> releases;
         try {
@@ -39,6 +45,8 @@ public class ManagementRestService {
         if (releaseName == null || releaseName.isEmpty()) {
             releaseName = Release.LATEST;
         }
+
+        log.info("get release '{}' from '{}'", releaseName, repository);
 
         Release release;
         try {
