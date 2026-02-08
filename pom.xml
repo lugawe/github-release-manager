@@ -5,7 +5,7 @@
 
     <groupId>de.lugawe</groupId>
     <artifactId>github-release-manager</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 
     <packaging>jar</packaging>
 
@@ -51,17 +51,18 @@
             <artifactId>quarkus-rest-jackson</artifactId>
         </dependency>
 
+        <!-- Source: https://mvnrepository.com/artifact/org.kohsuke/github-api -->
+        <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>github-api</artifactId>
+            <version>1.330</version>
+        </dependency>
+
         <!-- test dependencies -->
 
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
 
