@@ -14,9 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @ApplicationScoped
-public class ManagementRestService {
+public class RepoControllerService {
 
-    private static final Logger log = LoggerFactory.getLogger(ManagementRestService.class);
+    private static final Logger log = LoggerFactory.getLogger(RepoControllerService.class);
 
     @Inject
     private JsonConverter jsonConverter;
@@ -24,7 +24,7 @@ public class ManagementRestService {
     @Inject
     private GitHubService gitHubService;
 
-    public ManagementRestService() {}
+    public RepoControllerService() {}
 
     public List<JsonRelease> getReleases(String repository, int page, int size) {
 

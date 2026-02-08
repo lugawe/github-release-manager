@@ -12,12 +12,12 @@ import de.lugawe.grm.controller.json.JsonRelease;
 @Path("/repos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ManagementController {
+public class RepoController {
 
     @Inject
-    private ManagementRestService managementRestService;
+    private RepoControllerService repoControllerService;
 
-    public ManagementController() {}
+    public RepoController() {}
 
     @GET
     @Path("/{repository}/releases")
@@ -26,7 +26,7 @@ public class ManagementController {
             @QueryParam("page") @DefaultValue("0") int page,
             @QueryParam("size") @DefaultValue("10") int size) {
 
-        List<JsonRelease> releases = managementRestService.getReleases(repository, page, size);
+        List<JsonRelease> releases = repoControllerService.getReleases(repository, page, size);
 
         return Response.ok(releases).build();
     }
@@ -36,7 +36,7 @@ public class ManagementController {
     public Response getRelease(
             @PathParam("repository") String repository, @PathParam("releaseName") String releaseName) {
 
-        JsonRelease release = managementRestService.getRelease(repository, releaseName);
+        JsonRelease release = repoControllerService.getRelease(repository, releaseName);
 
         return Response.ok(release).build();
     }
