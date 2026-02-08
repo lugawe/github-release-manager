@@ -32,12 +32,30 @@ public class ManagementController {
     }
 
     @GET
-    @Path("/{repository}/releases/{versionName}")
+    @Path("/{repository}/releases/{releaseName}")
     public Response getRelease(
             @PathParam("repository") String repository, @PathParam("releaseName") String releaseName) {
 
         JsonRelease release = managementRestService.getRelease(repository, releaseName);
 
         return Response.ok(release).build();
+    }
+
+    @GET
+    @Path("/{repository}/releases/{releaseName}/assets")
+    public Response getAssets(
+            @PathParam("repository") String repository, @PathParam("releaseName") String releaseName) {
+
+        return Response.ok().build();
+    }
+
+    @GET
+    @Path("/{repository}/releases/{releaseName}/assets/{assetName}")
+    public Response getAsset(
+            @PathParam("repository") String repository,
+            @PathParam("releaseName") String releaseName,
+            @PathParam("assetName") String assetName) {
+
+        return Response.ok().build();
     }
 }
