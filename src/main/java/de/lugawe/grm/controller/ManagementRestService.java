@@ -28,7 +28,7 @@ public class ManagementRestService {
 
     public List<JsonRelease> getReleases(String repository, int page, int size) {
 
-        log.info("get releases from '{}', page {}, size {}", repository, page, size);
+        log.info("Get releases from '{}', page {}, size {}", repository, page, size);
 
         List<Release> releases;
         try {
@@ -46,7 +46,7 @@ public class ManagementRestService {
             releaseName = Release.LATEST;
         }
 
-        log.info("get release '{}' from '{}'", releaseName, repository);
+        log.info("Get release '{}' from '{}'", releaseName, repository);
 
         Release release;
         try {
