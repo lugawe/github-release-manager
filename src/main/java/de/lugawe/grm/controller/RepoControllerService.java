@@ -99,7 +99,7 @@ public class RepoControllerService {
             archiveAssets = gitHubService.getArchiveAssets(repository, tagName, assetName);
         } catch (Exception e) {
             throw new GRMException(
-                    "Could not extract archive asset '" + assetName + "' from release '" + tagName + "' in '"
+                    "Could not get archive assets from asset '" + assetName + "' from release '" + tagName + "' in '"
                             + repository + "'",
                     e);
         }
@@ -126,8 +126,8 @@ public class RepoControllerService {
             archiveAsset = gitHubService.getArchiveAsset(repository, tagName, assetName, archiveAssetName);
         } catch (Exception e) {
             throw new GRMException(
-                    "Could not extract archive asset '" + assetName + "' from release '" + tagName + "' in '"
-                            + repository + "'",
+                    "Could not get archive asset '" + archiveAssetName + "' from asset '" + assetName
+                            + "' from release '" + tagName + "' in '" + repository + "'",
                     e);
         }
 
