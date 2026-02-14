@@ -115,7 +115,7 @@ public class RepoControllerService {
         }
 
         log.info(
-                "Get archive asset {} from asset '{}' from release '{}' in '{}'",
+                "Get archive asset '{}' from asset '{}' from release '{}' in '{}'",
                 archiveAssetName,
                 assetName,
                 tagName,
