@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
+import de.lugawe.grm.core.domain.ArchiveAsset;
 import de.lugawe.grm.core.domain.Asset;
 import de.lugawe.grm.core.domain.Release;
 
@@ -11,6 +12,15 @@ import de.lugawe.grm.core.domain.Release;
 public class JsonConverter {
 
     public JsonConverter() {}
+
+    public JsonArchiveAsset toJsonArchiveAsset(ArchiveAsset archiveAsset) {
+
+        JsonArchiveAsset result = new JsonArchiveAsset();
+        result.setPath(archiveAsset.getPath());
+        result.setName(archiveAsset.getName());
+
+        return result;
+    }
 
     public JsonAsset toJsonAsset(Asset asset) {
 
