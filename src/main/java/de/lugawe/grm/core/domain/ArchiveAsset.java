@@ -1,15 +1,20 @@
 package de.lugawe.grm.core.domain;
 
-import java.util.List;
+public final class ArchiveAsset {
 
-public final class Asset {
-
+    private String path;
     private String name;
     private byte[] content;
 
-    private List<ArchiveAsset> archiveAssets;
+    public ArchiveAsset() {}
 
-    public Asset() {}
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 
     public String getName() {
         return name;
@@ -25,13 +30,5 @@ public final class Asset {
 
     public void setContent(byte[] content) {
         this.content = content;
-    }
-
-    public List<ArchiveAsset> getArchiveAssets() {
-        return archiveAssets;
-    }
-
-    public void setArchiveAssets(List<ArchiveAsset> archiveAssets) {
-        this.archiveAssets = archiveAssets;
     }
 }
