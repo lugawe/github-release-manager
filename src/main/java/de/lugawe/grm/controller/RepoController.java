@@ -21,59 +21,47 @@ public class RepoController {
     public RepoController() {}
 
     @GET
-    @Path("/{repository}/releases")
-    public List<JsonRelease> getReleases(
-            @PathParam("repository") String repository,
-            @QueryParam("page") @DefaultValue("0") int page,
-            @QueryParam("size") @DefaultValue("10") int size) {
+    @Path("/{repository}/releases/{tagName}")
+    public JsonRelease getRelease(@PathParam("repository") String repository, @PathParam("tagName") String tagName) {
 
-        return repoControllerService.getReleases(repository, page, size);
+        return repoControllerService.getRelease(repository, tagName);
     }
 
     @GET
-    @Path("/{repository}/releases/{releaseName}")
-    public JsonRelease getRelease(
-            @PathParam("repository") String repository, @PathParam("releaseName") String releaseName) {
+    @Path("/{repository}/releases/{tagName}/assets")
+    public List<JsonAsset> getAssets(@PathParam("repository") String repository, @PathParam("tagName") String tagName) {
 
-        return repoControllerService.getRelease(repository, releaseName);
+        return repoControllerService.getAssets(repository, tagName);
     }
 
     @GET
-    @Path("/{repository}/releases/{releaseName}/assets")
-    public List<JsonAsset> getAssets(
-            @PathParam("repository") String repository, @PathParam("releaseName") String releaseName) {
-
-        return repoControllerService.getAssets(repository, releaseName);
-    }
-
-    @GET
-    @Path("/{repository}/releases/{releaseName}/assets/{assetName}")
+    @Path("/{repository}/releases/{tagName}/assets/{assetName}")
     public JsonAsset getAsset(
             @PathParam("repository") String repository,
-            @PathParam("releaseName") String releaseName,
+            @PathParam("tagName") String tagName,
             @PathParam("assetName") String assetName) {
 
-        return repoControllerService.getAsset(repository, releaseName, assetName);
+        return repoControllerService.getAsset(repository, tagName, assetName);
     }
 
     @GET
-    @Path("/{repository}/releases/{releaseName}/assets/{assetName}/archive")
+    @Path("/{repository}/releases/{tagName}/assets/{assetName}/archive")
     public List<JsonArchiveAsset> getArchiveAssets(
             @PathParam("repository") String repository,
-            @PathParam("releaseName") String releaseName,
+            @PathParam("tagName") String tagName,
             @PathParam("assetName") String assetName) {
 
-        return repoControllerService.getArchiveAssets(repository, releaseName, assetName);
+        return repoControllerService.getArchiveAssets(repository, tagName, assetName);
     }
 
     @GET
-    @Path("/{repository}/releases/{releaseName}/assets/{assetName}/archive/{archiveAssetName}")
+    @Path("/{repository}/releases/{tagName}/assets/{assetName}/archive/{archiveAssetName}")
     public JsonArchiveAsset getArchiveAsset(
             @PathParam("repository") String repository,
-            @PathParam("releaseName") String releaseName,
+            @PathParam("tagName") String tagName,
             @PathParam("assetName") String assetName,
             @PathParam("archiveAssetName") String archiveAssetName) {
 
-        return repoControllerService.getArchiveAsset(repository, releaseName, assetName, archiveAssetName);
+        return repoControllerService.getArchiveAsset(repository, tagName, assetName, archiveAssetName);
     }
 }
