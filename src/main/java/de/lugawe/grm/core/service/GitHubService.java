@@ -12,10 +12,6 @@ public interface GitHubService {
 
     Release getRelease(String repository, String releaseName) throws Exception;
 
-    default Release getLatestRelease(String repository) throws Exception {
-        return getRelease(repository, Release.LATEST);
-    }
-
     List<Asset> getAssets(String repository, String releaseName) throws Exception;
 
     Asset getAsset(String repository, String releaseName, String assetName) throws Exception;
