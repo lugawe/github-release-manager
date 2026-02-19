@@ -1,6 +1,5 @@
 package de.lugawe.grm.core.service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,47 +18,47 @@ public class CachedGitHubService implements GitHubService {
     }
 
     @Override
-    public Optional<Release> getRelease(String repository, String tagName) throws Exception {
+    public Release getRelease(String repository, String tagName) throws Exception {
 
         Optional<Release> optionalRelease = cacheService.getReleaseByTagName(repository, tagName);
 
         if (optionalRelease.isEmpty()) {
-            Optional<Release> release = gitHubService.getRelease(repository, tagName);
-            release.ifPresent(value -> cacheService.put(repository, value));
+            Release release = gitHubService.getRelease(repository, tagName);
+            cacheService.put(repository, release);
             return release;
         }
 
-        return optionalRelease;
+        return optionalRelease.get();
     }
 
     @Override
     public List<Asset> getAssets(String repository, String tagName) throws Exception {
 
-        return getRelease(repository, tagName).map(Release::getAssets).orElseGet(Collections::emptyList);
+        return getRelease(repository, tagName).getAssets();
     }
 
     @Override
-    public Optional<Asset> getAsset(String repository, String tagName, String assetName) throws Exception {
+    public Asset getAsset(String repository, String tagName, String assetName) throws Exception {
 
         return getAssets(repository, tagName).stream()
                 .filter(asset -> assetName.equals(asset.getName()))
-                .findFirst();
+                .findFirst()
+                .orElseThrow();
     }
 
     @Override
     public List<ArchiveAsset> getArchiveAssets(String repository, String tagName, String assetName) throws Exception {
 
-        return getAsset(repository, tagName, assetName)
-                .map(Asset::getArchiveAssets)
-                .orElseGet(Collections::emptyList);
+        return getAsset(repository, tagName, assetName).getArchiveAssets();
     }
 
     @Override
-    public Optional<ArchiveAsset> getArchiveAsset(String repository, String tagName, String assetName, String path)
+    public ArchiveAsset getArchiveAsset(String repository, String tagName, String assetName, String path)
             throws Exception {
 
         return getArchiveAssets(repository, tagName, assetName).stream()
                 .filter(archiveAsset -> path.equals(archiveAsset.getPath()))
-                .findFirst();
+                .findFirst()
+                .orElseThrow();
     }
 }
