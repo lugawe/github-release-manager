@@ -67,25 +67,25 @@ public class RepoController {
     }
 
     @GET
-    @Path("/{repository}/releases/{tagName}/assets/{assetName}/archive/{archiveAssetName}")
+    @Path("/{repository}/releases/{tagName}/assets/{assetName}/archive/{path}")
     public JsonArchiveAsset getArchiveAsset(
             @PathParam("repository") String repository,
             @PathParam("tagName") String tagName,
             @PathParam("assetName") String assetName,
-            @PathParam("archiveAssetName") String archiveAssetName) {
+            @PathParam("path") String path) {
 
-        return repoControllerService.getArchiveAsset(repository, tagName, assetName, archiveAssetName);
+        return repoControllerService.getArchiveAsset(repository, tagName, assetName, path);
     }
 
     @GET
-    @Path("/{repository}/releases/{tagName}/assets/{assetName}/archive/{archiveAssetName}/content")
+    @Path("/{repository}/releases/{tagName}/assets/{assetName}/archive/{path}/content")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public InputStream getArchiveAssetContent(
             @PathParam("repository") String repository,
             @PathParam("tagName") String tagName,
             @PathParam("assetName") String assetName,
-            @PathParam("archiveAssetName") String archiveAssetName) {
+            @PathParam("path") String path) {
 
-        return repoControllerService.getArchiveAssetContent(repository, tagName, assetName, archiveAssetName);
+        return repoControllerService.getArchiveAssetContent(repository, tagName, assetName, path);
     }
 }

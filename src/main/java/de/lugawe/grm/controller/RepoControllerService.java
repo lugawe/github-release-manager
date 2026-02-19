@@ -120,49 +120,47 @@ public class RepoControllerService {
         return archiveAssets.stream().map(jsonConverter::toJsonArchiveAsset).toList();
     }
 
-    public JsonArchiveAsset getArchiveAsset(
-            String repository, String tagName, String assetName, String archiveAssetName) {
+    public JsonArchiveAsset getArchiveAsset(String repository, String tagName, String assetName, String path) {
 
         tagName = resolveTagName(tagName);
 
         log.info(
                 "Get archive asset '{}' from asset '{}' from release '{}' in '{}'",
-                archiveAssetName,
+                path,
                 assetName,
                 tagName,
                 repository);
 
         ArchiveAsset archiveAsset;
         try {
-            archiveAsset = gitHubService.getArchiveAsset(repository, tagName, assetName, archiveAssetName);
+            archiveAsset = gitHubService.getArchiveAsset(repository, tagName, assetName, path);
         } catch (Exception e) {
             throw new GRMException(
-                    "Could not get archive asset '" + archiveAssetName + "' from asset '" + assetName
-                            + "' from release '" + tagName + "' in '" + repository + "'",
+                    "Could not get archive asset '" + path + "' from asset '" + assetName + "' from release '" + tagName
+                            + "' in '" + repository + "'",
                     e);
         }
 
         return jsonConverter.toJsonArchiveAsset(archiveAsset);
     }
 
-    public InputStream getArchiveAssetContent(
-            String repository, String tagName, String assetName, String archiveAssetName) {
+    public InputStream getArchiveAssetContent(String repository, String tagName, String assetName, String path) {
 
         tagName = resolveTagName(tagName);
 
         log.info(
                 "Get archive asset '{}' content from asset '{}' from release '{}' in '{}'",
-                archiveAssetName,
+                path,
                 assetName,
                 tagName,
                 repository);
 
         try {
-            return gitHubService.getArchiveAssetContent(repository, tagName, assetName, archiveAssetName);
+            return gitHubService.getArchiveAssetContent(repository, tagName, assetName, path);
         } catch (Exception e) {
             throw new GRMException(
-                    "Could not get archive asset '" + archiveAssetName + "' content from asset '" + assetName
-                            + "' from release '" + tagName + "' in '" + repository + "'",
+                    "Could not get archive asset '" + path + "' content from asset '" + assetName + "' from release '"
+                            + tagName + "' in '" + repository + "'",
                     e);
         }
     }
