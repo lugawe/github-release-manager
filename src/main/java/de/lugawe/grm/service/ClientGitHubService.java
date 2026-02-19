@@ -97,21 +97,21 @@ public class ClientGitHubService implements GitHubService {
         GHRepository repo;
         try {
             repo = gitHub.getRepository(repository);
-            if (repo == null) {
-                throw new RuntimeException("Repository not found");
-            }
         } catch (IOException e) {
             throw new GRMException("Could not get repository", e);
+        }
+        if (repo == null) {
+            throw new GRMException("Repository not found");
         }
 
         GHRelease release;
         try {
             release = Release.LATEST.equals(tagName) ? repo.getLatestRelease() : repo.getReleaseByTagName(tagName);
-            if (release == null) {
-                throw new RuntimeException("Release not found");
-            }
         } catch (IOException e) {
             throw new GRMException("Could not get release", e);
+        }
+        if (release == null) {
+            throw new GRMException("Release not found");
         }
 
         return toRelease(release);
@@ -139,7 +139,7 @@ public class ClientGitHubService implements GitHubService {
         return assets.stream()
                 .filter(asset -> assetName.equals(asset.getName()))
                 .findFirst()
-                .orElseThrow();
+                .orElseThrow(() -> new GRMException("Asset not found: '" + assetName + "'"));
     }
 
     @Override
@@ -181,7 +181,7 @@ public class ClientGitHubService implements GitHubService {
         return archiveAssets.stream()
                 .filter(archiveAsset -> path.equals(archiveAsset.getPath()))
                 .findFirst()
-                .orElseThrow();
+                .orElseThrow(() -> new GRMException("Archive asset not found: '" + path + "'"));
     }
 
     @Override
