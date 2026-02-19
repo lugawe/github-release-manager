@@ -9,18 +9,17 @@ import de.lugawe.grm.core.domain.Release;
 
 public interface GitHubService {
 
-    Release getRelease(String repository, String tagName) throws Exception;
+    Release getRelease(String repository, String tagName);
 
-    List<Asset> getAssets(String repository, String tagName) throws Exception;
+    List<Asset> getAssets(String repository, String tagName);
 
-    Asset getAsset(String repository, String tagName, String assetName) throws Exception;
+    Asset getAsset(String repository, String tagName, String assetName);
 
-    InputStream getAssetContent(String repository, String tagName, String assetName) throws Exception;
+    InputStream getAssetContent(String repository, String tagName, String assetName);
 
-    List<ArchiveAsset> getArchiveAssets(String repository, String tagName, String assetName) throws Exception;
+    List<ArchiveAsset> getArchiveAssets(String repository, String tagName, String assetName);
 
-    ArchiveAsset getArchiveAsset(String repository, String tagName, String assetName, String path) throws Exception;
+    ArchiveAsset getArchiveAsset(String repository, String tagName, String assetName, String path);
 
-    InputStream getArchiveAssetContent(String repository, String tagName, String assetName, String path)
-            throws Exception;
+    InputStream getArchiveAssetContent(String repository, String tagName, String assetName, String path);
 }
