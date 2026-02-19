@@ -8,9 +8,12 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import jakarta.enterprise.context.ApplicationScoped;
+
 import de.lugawe.grm.core.domain.ArchiveAsset;
 import de.lugawe.grm.core.service.ArchiveService;
 
+@ApplicationScoped
 public class ZipArchiveService implements ArchiveService {
 
     public ZipArchiveService() {}
