@@ -26,6 +26,8 @@ public class JsonConverter {
 
         JsonAsset result = new JsonAsset();
         result.setName(asset.getName());
+        result.setContentType(asset.getContentType());
+        result.setUrl(asset.getUrl());
 
         return result;
     }

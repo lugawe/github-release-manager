@@ -7,6 +7,12 @@ public class JsonAsset {
     @JsonProperty("asset_name")
     private String name;
 
+    @JsonProperty("content_type")
+    private String contentType;
+
+    @JsonProperty("url")
+    private String url;
+
     public JsonAsset() {}
 
     public String getName() {
@@ -15,5 +21,21 @@ public class JsonAsset {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
