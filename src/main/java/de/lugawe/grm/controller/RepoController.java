@@ -1,5 +1,6 @@
 package de.lugawe.grm.controller;
 
+import java.io.InputStream;
 import java.util.List;
 
 import jakarta.inject.Inject;
@@ -45,6 +46,17 @@ public class RepoController {
     }
 
     @GET
+    @Path("/{repository}/releases/{tagName}/assets/{assetName}/content")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public InputStream getAssetContent(
+            @PathParam("repository") String repository,
+            @PathParam("tagName") String tagName,
+            @PathParam("assetName") String assetName) {
+
+        return repoControllerService.getAssetContent(repository, tagName, assetName);
+    }
+
+    @GET
     @Path("/{repository}/releases/{tagName}/assets/{assetName}/archive")
     public List<JsonArchiveAsset> getArchiveAssets(
             @PathParam("repository") String repository,
@@ -63,5 +75,17 @@ public class RepoController {
             @PathParam("archiveAssetName") String archiveAssetName) {
 
         return repoControllerService.getArchiveAsset(repository, tagName, assetName, archiveAssetName);
+    }
+
+    @GET
+    @Path("/{repository}/releases/{tagName}/assets/{assetName}/archive/{archiveAssetName}/content")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public InputStream getArchiveAssetContent(
+            @PathParam("repository") String repository,
+            @PathParam("tagName") String tagName,
+            @PathParam("assetName") String assetName,
+            @PathParam("archiveAssetName") String archiveAssetName) {
+
+        return repoControllerService.getArchiveAssetContent(repository, tagName, assetName, archiveAssetName);
     }
 }

@@ -1,5 +1,6 @@
 package de.lugawe.grm.core.service;
 
+import java.io.InputStream;
 import java.util.List;
 
 import de.lugawe.grm.core.domain.ArchiveAsset;
@@ -14,7 +15,12 @@ public interface GitHubService {
 
     Asset getAsset(String repository, String tagName, String assetName) throws Exception;
 
+    InputStream getAssetContent(String repository, String tagName, String assetName) throws Exception;
+
     List<ArchiveAsset> getArchiveAssets(String repository, String tagName, String assetName) throws Exception;
 
     ArchiveAsset getArchiveAsset(String repository, String tagName, String assetName, String path) throws Exception;
+
+    InputStream getArchiveAssetContent(String repository, String tagName, String assetName, String path)
+            throws Exception;
 }
