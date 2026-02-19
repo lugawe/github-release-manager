@@ -15,7 +15,6 @@ import de.lugawe.grm.core.domain.Asset;
 import de.lugawe.grm.core.domain.Release;
 import de.lugawe.grm.core.exception.GRMException;
 import de.lugawe.grm.core.service.GitHubService;
-import io.quarkus.cache.CachedResults;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +27,6 @@ public class RepoControllerService {
     private JsonConverter jsonConverter;
 
     @Inject
-    @CachedResults
     private GitHubService gitHubService;
 
     public RepoControllerService() {}
