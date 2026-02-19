@@ -39,7 +39,7 @@ public class RepoControllerService {
 
         tagName = resolveTagName(tagName);
 
-        log.info("Get release '{}' from '{}'", tagName, repository);
+        log.info("Getting release '{}' from repository '{}'", tagName, repository);
 
         Release release;
         try {
@@ -55,7 +55,7 @@ public class RepoControllerService {
 
         tagName = resolveTagName(tagName);
 
-        log.info("Get assets from release '{}' in '{}'", tagName, repository);
+        log.info("Getting assets for release '{}' in repository '{}'", tagName, repository);
 
         List<Asset> assets;
         try {
@@ -71,7 +71,7 @@ public class RepoControllerService {
 
         tagName = resolveTagName(tagName);
 
-        log.info("Get asset '{}' from release '{}' in '{}'", assetName, tagName, repository);
+        log.info("Getting asset '{}' from release '{}' in repository '{}'", assetName, tagName, repository);
 
         Asset asset;
         try {
@@ -89,7 +89,7 @@ public class RepoControllerService {
 
         tagName = resolveTagName(tagName);
 
-        log.info("Get asset '{}' content from release '{}' in '{}'", assetName, tagName, repository);
+        log.info("Getting content of asset '{}' from release '{}' in repository '{}'", assetName, tagName, repository);
 
         try {
             return gitHubService.getAssetContent(repository, tagName, assetName);
@@ -105,7 +105,11 @@ public class RepoControllerService {
 
         tagName = resolveTagName(tagName);
 
-        log.info("Get archive assets from asset '{}' from release '{}' in '{}'", assetName, tagName, repository);
+        log.info(
+                "Getting archive assets from asset '{}' in release '{}' in repository '{}'",
+                assetName,
+                tagName,
+                repository);
 
         List<ArchiveAsset> archiveAssets;
         try {
@@ -125,7 +129,7 @@ public class RepoControllerService {
         tagName = resolveTagName(tagName);
 
         log.info(
-                "Get archive asset '{}' from asset '{}' from release '{}' in '{}'",
+                "Getting archive asset '{}' from asset '{}' in release '{}' in repository '{}'",
                 path,
                 assetName,
                 tagName,
@@ -149,7 +153,7 @@ public class RepoControllerService {
         tagName = resolveTagName(tagName);
 
         log.info(
-                "Get archive asset '{}' content from asset '{}' from release '{}' in '{}'",
+                "Getting content of archive asset '{}' from asset '{}' in release '{}' in repository '{}'",
                 path,
                 assetName,
                 tagName,
