@@ -30,11 +30,13 @@ public class RepoControllerService {
 
     public RepoControllerService() {}
 
+    private String resolveTagName(String tagName) {
+        return (tagName == null || tagName.isEmpty()) ? Release.LATEST : tagName;
+    }
+
     public JsonRelease getRelease(String repository, String tagName) {
 
-        if (tagName == null || tagName.isEmpty()) {
-            tagName = Release.LATEST;
-        }
+        tagName = resolveTagName(tagName);
 
         log.info("Get release '{}' from '{}'", tagName, repository);
 
@@ -50,9 +52,7 @@ public class RepoControllerService {
 
     public List<JsonAsset> getAssets(String repository, String tagName) {
 
-        if (tagName == null || tagName.isEmpty()) {
-            tagName = Release.LATEST;
-        }
+        tagName = resolveTagName(tagName);
 
         log.info("Get assets from release '{}' in '{}'", tagName, repository);
 
@@ -68,9 +68,7 @@ public class RepoControllerService {
 
     public JsonAsset getAsset(String repository, String tagName, String assetName) {
 
-        if (tagName == null || tagName.isEmpty()) {
-            tagName = Release.LATEST;
-        }
+        tagName = resolveTagName(tagName);
 
         log.info("Get asset '{}' from release '{}' in '{}'", assetName, tagName, repository);
 
@@ -88,9 +86,7 @@ public class RepoControllerService {
 
     public List<JsonArchiveAsset> getArchiveAssets(String repository, String tagName, String assetName) {
 
-        if (tagName == null || tagName.isEmpty()) {
-            tagName = Release.LATEST;
-        }
+        tagName = resolveTagName(tagName);
 
         log.info("Get archive assets from asset '{}' from release '{}' in '{}'", assetName, tagName, repository);
 
@@ -110,9 +106,7 @@ public class RepoControllerService {
     public JsonArchiveAsset getArchiveAsset(
             String repository, String tagName, String assetName, String archiveAssetName) {
 
-        if (tagName == null || tagName.isEmpty()) {
-            tagName = Release.LATEST;
-        }
+        tagName = resolveTagName(tagName);
 
         log.info(
                 "Get archive asset '{}' from asset '{}' from release '{}' in '{}'",
